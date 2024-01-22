@@ -1,0 +1,527 @@
+@import "./scss/normalize.scss";
+@import "./scss/variables.scss";
+@import "./scss/mixin.scss";
+@import "./scss/mediaqueries.scss";
+@import "./scss/fonts.scss";
+@import "./scss/colors.scss";
+@import "./scss/utility.scss";
+
+body {
+    background: $background;
+}
+
+main {
+    min-height: 100vh;
+}
+
+.main-header {
+    padding: 20px 0;
+    background-color: $primary;
+    color: $white;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &.floated {
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
+
+.index-content {
+    .rowed {
+        margin: 0 -16px;
+        width: auto;
+
+        .col-6 {
+            padding-bottom: 16px;
+        }
+    }
+
+    .image {
+        display: block;
+
+        img {
+            width: 100%;
+            border-radius: 6px;
+            height: 160px;
+            object-fit: cover;
+            vertical-align: bottom;
+        }
+    }
+
+    .hom-link {
+        border-radius: 6px;
+        background-color: $white;
+        text-decoration: none;
+        border: none;
+        display: block;
+        width: 100%;
+    }
+
+    .home-term-link {
+        font-size: 18px;
+        color: $secondary;
+        text-decoration: none;
+        border: none;
+        padding: 6px 8px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-transform: capitalize;
+    }
+}
+
+.scrollTax, .childscrolltx{
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    background-color: $white;
+    margin: 1px 0 0 0;
+    
+    ul{
+        margin: 0 ;
+        padding: 0;
+        white-space: nowrap;
+        li{
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            a{
+                display: inline-block;
+                font-size: 16px;
+                background-color: $white;
+                font-family: $font-primary;
+                padding: 14px 12px;
+                color: $teritary;
+                margin: 0;
+                text-transform: uppercase;
+                text-decoration: none;
+                position: relative;
+            }
+            &.active a{
+                color: $primary;
+                &::after{
+                    content: "";
+                    bottom: 0;
+                    right: 25px;
+                    left: 25px;
+                    height: 3px;
+                    bottom: 0;
+                    background-color: $primary;
+                    position: absolute;
+                }
+            }
+        }
+        &.child-tax li a{
+            font-size: 16px;
+            &.active{
+                color: $primary;
+            }
+        }
+    }
+}
+
+.singlefood {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .splide__track {
+
+        img,
+        .splide__slide {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .details-section {
+        padding-bottom: 80px;
+        text-transform: capitalize;
+    }
+
+    .details-wrap {
+        margin-top: 15px;
+        background-color: $white;
+        padding: 20px;
+        border-radius: 10px;
+
+        label {
+            font-size: 17px;
+            color: $secondary;
+            font-family: $font-secondary;
+            padding: 0 0 8px 0;
+            display: block
+        }
+
+        .text-fld {
+            font-size: 18px;
+            padding: 0 0 20px 0;
+            display: block;
+            font-weight: 300;
+        }
+    }
+
+    .price {
+        width: 100%;
+        background-color: $white;
+        color: $secondary;
+        font-size: 18px;
+        color: $primary;
+        padding: 8px;
+        border-radius: 8px;
+        margin: -36px 0 20px 0;
+        position: relative;
+        border: solid 1px $primary;
+    }
+}
+
+.sticky-menu {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.products-list {
+    padding: 15px 0 100px 0;
+
+    .row {
+        margin: 0 -5px;
+        position: relative;
+    }
+}
+
+.single-prod-list {
+    display: none;
+    width: 100%;
+    clear: both;
+    padding: 8px 0;
+
+    &.show {
+        display: flex;
+    }
+
+    .product-card {
+        width: 100%;
+        display: flex;
+    }
+
+    .image {
+        width: 90px;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+    }
+
+    a {
+        color: $teritary;
+        text-decoration: none;
+    }
+
+    .details {
+        width: calc(100% - 90px);
+        box-sizing: border-box;
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+
+  
+    .product-header-sec{
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 10;
+    }
+
+    
+}
+
+.food-orderdetail {
+    display: flex;
+    font-size: 16px;
+
+    .orderdetail {
+        display: flex;
+        padding: 0 15px 0 0;
+
+        i {
+            padding: 6px 0 3px 3px;
+            color: $teritary;
+            font-size: 12px;
+            font-style: normal;
+        }
+
+        .box-peices {
+            background: transparentize($color: $black, $amount: .95);
+            padding: 3px 6px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+
+        .avg-peices {
+            color: $red;
+            font-size: 13px;
+            padding: 3px 0;
+        }
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+}
+
+.product-name {
+    font-size: 17px;
+    color: $teritary;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 2px 0 8px 0;
+    font-weight: 400;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.price {
+    position: relative;
+    background-color: $white;
+    padding: 3px 5px;
+    border-radius: 10px;
+    display: flex;
+    color: $secondary;
+    font-size: 16px;
+    align-items: flex-end;
+    width: fit-content;
+
+    span {
+        font-size: 15px;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.cart-add-btn-wrap {
+    display: flex;
+    margin: 4px 0;
+
+    .input-wrap {
+        display: flex;
+        background-color: $white;
+        border: solid 1px transparentize($color: $black, $amount: .9);
+        border-radius: 8px 0 0 8px;
+
+        .txt-box {
+            width: 60px;
+            padding: 0 8px;
+            border: transparent;
+            background-color: transparent;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .txt-txt {
+            border: none;
+            height: 30px;
+            line-height: 30px;
+            color: $secondary;
+            padding: 0 10px;
+        }
+
+    }
+
+    .add-btn {
+        background-color: $primary;
+        color: $white;
+        border: none;
+        padding: 3px 14px;
+        font-size: 13px;
+        border-radius: 0 8px 8px 0;
+    }
+}
+
+.product-search-wrap{
+    font-size: 16px;
+    position: relative;
+    width: 100%;
+    padding: 5px 0 2px 0;
+    .txt-search{
+        width: 100%;
+        border-radius: 40px;
+        height: 32px;
+        padding: 5px 18px;
+        display: block;
+        line-height: 32px;
+        font-size: 16px;
+        box-sizing: border-box;
+        border: solid 1px transparentize($color: $black, $amount: .85);
+        box-shadow: none;
+        outline: none;
+    }
+    .search-btn{
+        width: 22px;
+        height: 22px;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 17px;
+        top: 8px;
+        svg{
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+.products-summary-list{
+    padding: 20px 0 80px 0;
+}
+.forms-pre{
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+    }
+    .form-wrap{
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+    .form-group{
+        padding: 5px 0;
+        width: 100%;
+    }
+    .form-control{
+        width: 100%;
+        font-size: 16px;
+        border: solid 1px transparentize($color: $black, $amount: .8);
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 13px 20px;
+        outline: none;
+    }
+    .secondary-header{
+        padding: 0 0 20px 0;
+    }
+    .footer{
+        margin: 10px 0 0 0;
+    }
+}
+
+.submit-btn-pop{
+    display: flex;
+    margin: 0 0 0 auto;
+}
+.single-product-summary{
+    display: flex;
+    .summar-single{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        position: relative;
+    }
+    .image {
+        width: 55px;
+        position: relative;
+        display: flex;
+        img {
+            width: 100%;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+    }
+    .details {
+        width: calc(100% - 60px);
+        box-sizing: border-box;
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-add-btn-wrap{
+        margin: 0;
+    }
+    .price.main{
+       font-size: 18px;
+       margin: 4px 0  0 0;
+       font-weight: bold;
+    }
+    .food-orderdetail .orderdetail i{
+        line-height: 20px;
+    }
+    .price.small{
+        position: relative;
+        margin: 4px 0;
+        &:before{
+            content: "x";
+            position: absolute;
+            left: -15px;
+            padding-left: 5px;
+        }
+    }
+    .deleteCartBtn{
+        padding: 4p;
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 15px;
+        cursor: pointer;
+        svg{
+            width: 15px;
+            fill: $primary;
+        }
+    }
+}
+.cart-total{
+    position: fixed;
+    background: $white;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px 0;
+    .car-wrap{
+        display: flex;
+        justify-content: space-between;
+    }
+    .total{
+        color: transparentize($color: $black, $amount: .4);
+        margin: 0;
+        font-size: 14px;
+        padding: 0 0 3px;
+    }
+    .total-amount{
+        font-size: 22px;
+        font-weight: bold;
+        color: $primary;
+    }
+}
+
+.submit-total{
+    position: fixed;
+    background: $white;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px 0;
+}

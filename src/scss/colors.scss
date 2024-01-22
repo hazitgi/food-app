@@ -1,0 +1,42 @@
+@import 'variables.scss';
+
+.color-primary,
+.color-red {
+  color: $primary;
+}
+.color-secondary {
+  color: $secondary;
+}
+.color-teritary {
+  color: $teritary;
+}
+.color-black {
+  color: $black;
+}
+.color-white {
+  color: $white;
+}
+.color-red {
+  color: $red;
+}
+.text-color {
+  color: $text-color;
+}
+.bg-primary {
+  background-color: $primary;
+}
+.bg-secondary {
+  background-color: $secondary;
+}
+.bg-teritary {
+  background-color: $teritary;
+}
+.bg-black {
+  background-color: $black;
+}
+.bg-white {
+  background-color: $white;
+}
+.bg-text-color {
+  background-color: $text-color;
+}

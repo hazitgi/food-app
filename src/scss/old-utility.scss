@@ -1,0 +1,298 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import 'mediaqueries.scss';
+
+
+.container{
+    
+    display: flex;
+    margin:0 auto;
+    padding: 0 20px;
+    width: 100%;
+    
+    @include breakpoint(phablet){
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    @include breakpoint(mobileonly){
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    @include breakpoint(tablet){
+        width: 50rem;
+    }
+    @include breakpoint(laptop){
+        width: 64rem;
+    }
+    @include breakpoint(desktop){
+        width: 75rem;
+    }
+    @include breakpoint(lgdesktop){
+        width: 80.6rem;
+    }
+  }
+
+hr.line-1{
+    border-color: $text-color;
+    opacity: .3;
+    margin: 15px 0 12px 0;
+    &.white{
+        border-color: $white;
+    }
+    @include breakpoint(tablet){
+        margin: 30px 0 24px 0;
+        width: 100%;
+    }
+}
+
+hr.line-2{
+    border: none;
+    border-top:1px solid #ccc;
+    background: none;
+    margin: 15px 0 12px 0;
+    &.white{
+        border-color: $white;
+    }
+    @include breakpoint(tablet){
+        margin: 30px 0 24px 0;
+        width: 100%;
+    }
+}
+
+hr.line-3{
+    border: none;
+    border-top:1px solid #707070;
+    background: none;
+    margin: 40px 0 0px 0;
+    order: 4;
+    width: 100%;
+
+    &.white{
+        border-color: $white;
+    }
+    @include breakpoint(tablet){
+        margin: 50px 0 0px 0;
+        width: 100%;
+    }
+}
+
+hr.line-4{
+    border: none;
+    border-top:solid 2px #c0c0bf;
+    grid-column: 1 / -1;
+    background: none;
+    margin: 30px 0 0px 0;
+    width: 100%;
+
+    &.white{
+        border-color: $white;
+    }
+    @include breakpoint(tablet){
+        margin: 30px 0 0px 0;
+        width: 100%;
+    }
+}
+
+.btn{
+    box-sizing: border-box;
+    outline: none;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s ease;
+    &:after{
+        content: "";
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: -100%;
+        transition: all .3s ease;
+    }
+    @include breakpoint(laptop){
+        &:hover:after{
+            top:0;
+            height: 110%;
+        }
+    }
+}
+.btn-primary,
+.btn-primary-o{
+    color: $white;
+    background-color: $teritary;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-family: $font-primary;
+    font-weight: 700;
+    border: solid 1px $teritary;
+    cursor: pointer;
+    padding: 0  25px;
+    height:38px;
+    line-height: 38px;
+    font-size: 14px;
+    @include breakpoint(laptop){
+        padding: 0  34px;
+        height:48px;
+        line-height: 48px;
+        font-size: 14px;
+        letter-spacing: 3.2px;
+    }
+}
+
+.btn-primary {
+    z-index: 1;
+    @include breakpoint(laptop){
+        &:hover {
+            color: $teritary;
+        }
+    }
+
+    &:after{
+        background-color: $white;
+    }
+}
+
+.btn-primary-o{
+    background-color: transparent;
+    color:$teritary;
+    white-space: nowrap;
+    &.white{
+        color: $white;
+        border-color: $white;
+    }
+    &:after{
+        background-color: $teritary;
+    }
+    @include breakpoint(laptop){
+        &:hover{
+            color: $white;
+        }
+    }
+}
+.btn-secondary,
+.btn-secondary-o{
+    color: $white;
+    background-color: $white;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-family: $font-primary;
+    font-weight: 700;
+    border: solid 1px $teritary;
+    cursor: pointer;
+    padding: 0  25px;
+    height:33px;
+    line-height: 33px;
+    font-size: 14px;
+    border: none;
+    @include breakpoint(laptop){
+        padding: 0  30px;
+        font-size: 14px;
+        letter-spacing: 3.2px;
+    }
+    &.primary4{
+        color: $primary4;
+    }
+}
+.btn-secondary-o{
+    background-color: transparent;
+    color:$teritary;
+    &.white{
+        color: $white;
+        border-color: $white;
+    }
+    &:after{
+        background-color: $teritary;
+    }
+    @include breakpoint(laptop){
+        &:hover{
+            color: $white;
+        }
+    }
+}
+.points{
+    margin: 0;
+    padding: 0;
+    li{
+        display: block;
+        color:$text-color;
+        font-family: $font-secondary;
+        line-height: 22px;
+        font-size: 16px;
+        padding: 4px 0;
+        @include breakpoint(tablet){
+            line-height: 24px;
+            font-size: 18px;
+        }
+        @include breakpoint(laptop){
+            line-height: 26px;
+            font-size: 20px;
+        }
+        @include breakpoint(mobileonly){
+            text-align: center;
+        }
+        @include breakpoint(phablet){
+            &:before{
+                content: "";
+                display: inline-block;
+                background-color: $primary;
+                height: 9px;
+                width: 9px;
+                border-radius: 50%;
+                margin: 0 10px 0 2px;
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+}
+
+
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+
+.relative {
+    position: relative;
+}
+
+.img-responsive{
+    max-width: 100%;
+}
+
+.slider_wrap {
+
+   .owl-theme .owl-nav {
+        position: absolute;
+        right: 15px;
+        top: -10px;
+        display: flex;
+
+        button.owl-prev,
+        button.owl-next {
+            padding: 1px 6px !important;
+            background-color: #0077b9 !important;
+            color: $white !important;
+            margin: 6px 2px;
+            line-height: 16px;
+        }
+    }
+}
+
+.banner-below-btns{
+    padding: 60px;
+    @include breakpoint(tablet){
+        padding: 110px 0;
+    }
+    .whole-link{
+        display: flex;
+    }
+}

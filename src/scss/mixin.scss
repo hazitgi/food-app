@@ -1,0 +1,27 @@
+@mixin marginPadding($margin, $padding) {
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin flex($content, $align) {
+    display: flex;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin transition($transition, $easing) {
+    transition: $transition $easing;
+}
+
+@mixin fullWidthImage() {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@mixin bgImage($image, $repeat, $size, $pos){
+    background-image: url('/images/#{$image}');
+    background-repeat: $repeat;
+    background-size: $size;
+    background-position: $pos ;
+}

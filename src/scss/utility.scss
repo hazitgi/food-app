@@ -1,0 +1,87 @@
+.container{
+    
+    display: flex;
+    margin:0 auto;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 600px;
+    
+  
+    .row{
+        width: 100%;
+    }
+  }
+
+  .btn{
+    box-sizing: border-box;
+    outline: none;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s ease;
+    &:after{
+        content: "";
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: -100%;
+        transition: all .3s ease;
+    }
+    @include breakpoint(laptop){
+        &:hover:after{
+            top:0;
+            height: 110%;
+        }
+    }
+}
+
+.btn-primary,
+.btn-primary-o{
+    color: $primary;
+    background-color: $white;
+    font-family: $font-primary;
+    font-weight: 700;
+    border: solid 1px $white;
+    cursor: pointer;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: $secondary;
+    z-index: 10;
+    border-radius: 6px;
+}
+.btn-secondary{
+    background-color: $primary;
+    color: $white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 13px 20px;
+    display: flex;
+}
+.text-center{
+    text-align: center;
+}
+.row.rowed{
+    display: flex;
+    width: 100%;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    [class^="col-"] {
+        box-sizing: border-box;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .col-6{
+            width: 50%;
+    }
+}
