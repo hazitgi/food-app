@@ -4,9 +4,10 @@ import ProductCategory from "../../../_components/ProductSingle/ProductCategory"
 import ProductSearch from "../../../_components/ProductSingle/ProductSearch";
 import SubmitButton from "../../../_components/ProductSingle/SubmitButton";
 import { MyContext } from "../../../App";
+import request from "../../../services/api";
 
 const ProductListing = () => {
-  const apiProduct = "https://food-admin.apto.co.in/api/product";
+  const apiProduct = "/api/product";
 
   const [productsArray, setProductsArray] = useState([]);
 
@@ -17,8 +18,8 @@ const ProductListing = () => {
   }, []);
 
   const fetchData = async () => {
-    const response = await fetch(apiProduct);
-    return await response.json();
+    const response = await request.get(apiProduct);
+    return response.data;
   };
 
   const titleContext = useContext(MyContext);
