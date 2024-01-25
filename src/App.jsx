@@ -32,7 +32,11 @@ const router = createBrowserRouter([
     title: "login",
   },
 ]);
-const MyContext = React.createContext();
+const MyContext = React.createContext({
+  user: "",
+  loggedIn: false,
+  cart : localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")) : [],
+});
 
 function App() {
   const [title, setTitle] = useState("title");

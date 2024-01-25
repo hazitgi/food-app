@@ -13,17 +13,15 @@ const ProductListing = () => {
 
   useEffect(() => {
     fetchData().then((response) => {
-      setProductsArray(response.data);
+      setProductsArray(response);
     });
   }, []);
 
   const fetchData = async () => {
     const response = await request.get(apiProduct);
-    return response.data;
+    return response.data.result;
   };
 
-  const titleContext = useContext(MyContext);
-  titleContext.changeTitle("Create Purchase Order");
 
   return (
     <>

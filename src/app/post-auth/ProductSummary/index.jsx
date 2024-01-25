@@ -11,13 +11,15 @@ const ProductSummary = () => {
 
   useEffect(() => {
     fetchData().then((response) => {
-      setProductsSummaryArray(response.data);
+      setProductsSummaryArray(response);
     });
   }, []);
 
   const fetchData = async () => {
     const response = await request.get(apiProduct);
-    return response.data
+    if(response?.data?.result[0]){
+      return response.data.result
+    }
   };
 
   const titleContext = useContext(MyContext);

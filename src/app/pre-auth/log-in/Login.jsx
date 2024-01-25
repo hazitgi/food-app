@@ -13,10 +13,10 @@ export const Login = () => {
     passwordError: "",
   });
 
+  const context = useContext(MyContext);
   const { username, password } = data;
   const { usernameError, passwordError } = error;
 
-  const userContext = useContext(MyContext);
   const navigate = useNavigate();
 
   const changeHandler = (e) => {
@@ -43,7 +43,8 @@ export const Login = () => {
       })
         .then((res) => {
           console.log(res);
-          userContext.user = res?.data?.result.name
+          context.user = res?.data?.result.name
+          context.loggedIn = true
           localStorage.setItem("token", res?.data?.result.token);
           // forward to the homepage
           navigate("/");
