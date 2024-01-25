@@ -7,7 +7,7 @@ const SubmitButton = () => {
       <div className="container">
         <div className="row"></div>
         <div className="submit-btn-pop">
-          <span className="btn btn-secondary">Submit</span>
+          <span className="btn btn-secondary">Cart</span>
         </div>
       </div>
     </section>

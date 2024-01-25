@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CartAddButton from "./CartAddButton";
 
 const ProductSingle = (props) => {
-  const { name, product_image, our_price } = props?.details;
+  const { name, product_image, our_price, id } = props?.details;
 
   return (
     <div className="single-prod-list show ">
@@ -25,7 +25,7 @@ const ProductSingle = (props) => {
               <div className="box-peices">10pcs/box</div>
             </div>
           </div>
-          <CartAddButton />
+          <CartAddButton product_id={id} price={our_price} />
           <div className="food-orderdetail">
             <div className="orderdetail">
               <div className="avg-peices">Avg.Qty: 0</div>
