@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import request from "../../../services/api";
-import { MyContext } from "../../../App";
-import { useNavigate } from 'react-router-dom';
+import { AppContext } from "../../../store/Context";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [data, setData] = useState({
@@ -13,7 +13,7 @@ export const Login = () => {
     passwordError: "",
   });
 
-  const context = useContext(MyContext);
+  const context = useContext(AppContext);
   const { username, password } = data;
   const { usernameError, passwordError } = error;
 
@@ -37,15 +37,18 @@ export const Login = () => {
     }
     if (username && password) {
       setError({ ...error, usernameError: "", passwordError: "" });
-      request.post("/api/login", {
-        email: username,
-        password: password,
-      })
+      request
+        .post("/api/login", {
+          email: username,
+          password: password,
+        })
         .then((res) => {
-          context.user = res?.data?.result.name
-          context.loggedIn = true
           localStorage.setItem("token", res?.data?.result.token);
           // forward to the homepage
+          context.dispatch({
+            type: "SET_LOGIN",
+            payload: res?.data?.result.token,
+          });
           navigate("/");
         })
         .catch((err) => {

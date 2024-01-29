@@ -17,7 +17,7 @@ request.interceptors.response.use(
     console.log(err?.response?.status);
     if (err?.response?.status === 401) {
       localStorage.removeItem("token");
-      window.location = window.location.protocol + "//" + window.location.host + "/login"
+      // window.location = window.location.protocol + "//" + window.location.host + "/login"
     }
     if (typeof err?.response?.data?.error?.name !== "undefined") {
       if (err?.response?.data?.error?.name === "TokenExpiredError") {

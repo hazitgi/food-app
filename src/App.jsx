@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./Styles.scss";
 //import { getBrowserRouter } from "./routes/AppRoutes";
@@ -6,8 +6,8 @@ import ProductListing from "./app/post-auth/ProductListing";
 import { Login } from "./app/pre-auth/log-in/Login";
 import ProductSummary from "./app/post-auth/ProductSummary";
 import Layout from "./_components/Layout";
-
 //const router = createBrowserRouter(getBrowserRouter());
+import { AppProvider } from "./store/Context";
 
 const router = createBrowserRouter([
   {
@@ -32,26 +32,16 @@ const router = createBrowserRouter([
     title: "login",
   },
 ]);
-const MyContext = React.createContext({
-  user: "",
-  loggedIn: false,
-  cart : localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")) : [],
-});
 
 function App() {
-  const [title, setTitle] = useState("title");
-  const changeTitle = (value) => {
-    setTitle(value);
-  };
   return (
     <div className="App">
-      <MyContext.Provider value={{ title, changeTitle }}>
+      <AppProvider>
         <RouterProvider router={router} />
-      </MyContext.Provider>
+      </AppProvider>
     </div>
   );
 }
 
-export { MyContext };
 
 export default App;

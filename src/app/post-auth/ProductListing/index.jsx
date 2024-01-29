@@ -3,7 +3,7 @@ import ProductSingle from "../../../_components/ProductSingle";
 import ProductCategory from "../../../_components/ProductSingle/ProductCategory";
 import ProductSearch from "../../../_components/ProductSingle/ProductSearch";
 import SubmitButton from "../../../_components/ProductSingle/SubmitButton";
-import { MyContext } from "../../../App";
+import { AppContext } from "../../../store/Context";
 import request from "../../../services/api";
 
 const ProductListing = () => {

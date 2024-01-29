@@ -1,37 +1,53 @@
 import React, { useContext, useState, useEffect } from "react";
-import { MyContext } from "../../../App";
+import { AppContext } from "../../../store/Context";
 import ProductSummarySingle from "../../../_components/ProductSummary";
 import TotalCart from "../../../_components/ProductSummary/TotalCart";
 import request from "../../../services/api";
 
 const ProductSummary = () => {
+  const context  = useContext(AppContext);
+  console.log("context.cartCount",context.user);
+
   const apiProduct = "/api/product";
 
-  const [productsSummaryArray, setProductsSummaryArray] = useState([]);
+  // const [productsSummaryArray, setProductsSummaryArray] = useState([]);
+  const {cart, cartCount, title} = context
+
+  console.log(cart, cartCount, title);
 
   useEffect(() => {
-    fetchData().then((response) => {
-      setProductsSummaryArray(response);
-    });
+
   }, []);
 
   const fetchData = async () => {
-    const response = await request.get(apiProduct);
-    if(response?.data?.result[0]){
-      return response.data.result
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    for(let item of cartItems) {
+      console.log(item, "item item item");
+      const response = await request.post(apiProduct , {items:item.id});
+      console.log(response.data.result);
     }
+    const response = await request.post(apiProduct);
+    return response.data.result;
+
+
   };
 
-  const titleContext = useContext(MyContext);
-  titleContext.changeTitle("Product Summary");
+
+
+  useEffect(() => {
+
+  }, [])
+  
   return (
     <div className="product-summary-sec">
       <div className="product-section">
         <section className="products-summary-list">
           <div className="container">
             <div className="row">
-              {productsSummaryArray
-                ? productsSummaryArray.map((product) => {
+              {cart
+                ? cart.map((product) => {
+                  {console.log("inside from dom",product);}
                     return (
                       <ProductSummarySingle
                         key={product?.id}

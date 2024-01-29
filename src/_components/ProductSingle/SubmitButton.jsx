@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../store/Context";
 
 const SubmitButton = () => {
   return (
@@ -7,7 +8,9 @@ const SubmitButton = () => {
       <div className="container">
         <div className="row"></div>
         <div className="submit-btn-pop">
-          <span className="btn btn-secondary">Cart</span>
+          <Link to="/summary">
+            <span className="btn btn-secondary">Cart</span>
+          </Link>
         </div>
       </div>
     </section>
