@@ -45,6 +45,7 @@ export const Login = () => {
         })
         .then((res) => {
           localStorage.setItem("token", res?.data?.result.token);
+          localStorage.setItem("user", res?.data?.result.name);
           // forward to the homepage
           context.dispatch({
             type: "SET_LOGIN",

@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../store/Context";
 
-export const DeleteButton = () => {
+export const DeleteButton = ({ id, name }) => {
+  const { state, dispatch } = useContext(AppContext);
+
+  const deleteItemFromCart = () => {
+    let confirm = window.confirm(`Are you sure want to delete ${name} from cart?`);
+    if (!confirm) {
+      return;
+    }
+    const cart = state.cart
+    const updatedCart = cart.filter((item) => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    dispatch({
+      type: "SET_CART",
+      payload: updatedCart,
+    });
+  };
   return (
-    <span className="deleteCartBtn">
+    <span className="deleteCartBtn" onClick={() => deleteItemFromCart()}>
       <TrashSvg />
     </span>
   );

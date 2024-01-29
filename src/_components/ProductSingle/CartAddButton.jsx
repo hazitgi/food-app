@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../store/Context";
 
 const CartAddButton = (props) => {
+  const { state, dispatch } = useContext(AppContext);
+  const { cart } = state;
+  const { cartItem } = props;
   const { id, price } = props;
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(cartItem?.count || 0);
 
   const handleChangeText = (e) => {
     let value = e.target.value;
@@ -10,23 +14,27 @@ const CartAddButton = (props) => {
   };
 
   const addToCart = () => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingItem = cart.find((item) => item.id === id);
+    let cartItems = cart
+    const existingItem = cartItems.find((item) => item.id === id);
 
     if (existingItem) {
       existingItem.count = count;
       existingItem.price = price;
       existingItem.total_price = price * count;
     } else {
-      cart.push({
+      cartItems.push({
         id: id,
         count: count,
         price: price,
         total_price: price * count,
       });
     }
+    dispatch({
+      type: "SET_CART",
+      payload: cartItems,
+    });
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   return (

@@ -17,12 +17,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProtectedRoute element={ProductListing} />,
+        // element: <ProductListing />,
+        element: (
+          <ProtectedRoute>
+            <ProductListing />
+          </ProtectedRoute>
+        ),
         title: "Create Purchase Order",
       },
       {
         path: "summary",
-        element: <ProtectedRoute element={ProductSummary} />,
+        // element: <ProductSummary />,
+        // element: <ProtectedRoute element={ProductSummary} />,
+        element: (
+          <ProtectedRoute>
+            <ProductSummary />
+          </ProtectedRoute>
+        ),
         title: "Purchase Summary",
       },
     ],

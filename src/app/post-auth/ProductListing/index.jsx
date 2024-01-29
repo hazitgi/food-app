@@ -7,6 +7,8 @@ import { AppContext } from "../../../store/Context";
 import useRequest from "../../../services/api";
 
 const ProductListing = () => {
+  const { state } = useContext(AppContext);
+  const { cart } = state;
   const request = useRequest();
   const apiProduct = "/api/product";
 
@@ -23,7 +25,6 @@ const ProductListing = () => {
     return response?.data?.result || [];
   };
 
-
   return (
     <>
       <div className="product-header-sec">
@@ -36,10 +37,17 @@ const ProductListing = () => {
             <div className="row">
               {productsArray
                 ? productsArray.map((product) => {
-                    return (
-                      <ProductSingle key={product?.id} details={product} />
-                    );
-                  })
+                  let cartItem = cart.find((item) => {
+                    return item.id === product.id;
+                  });
+                  return (
+                    <ProductSingle
+                      key={product?.id}
+                      details={product}
+                      cartItem={cartItem}
+                    />
+                  );
+                })
                 : ""}
             </div>
           </div>

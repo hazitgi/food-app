@@ -4,6 +4,7 @@ import CartAddButton from "./CartAddButton";
 
 const ProductSingle = (props) => {
   const { name, product_image, our_price, id } = props?.details;
+  const { cartItem } = props;
 
   return (
     <div className="single-prod-list show ">
@@ -25,7 +26,7 @@ const ProductSingle = (props) => {
               <div className="box-peices">10pcs/box</div>
             </div>
           </div>
-          <CartAddButton id={id} price={our_price} />
+          <CartAddButton id={id} price={our_price} cartItem={cartItem} />
           <div className="food-orderdetail">
             <div className="orderdetail">
               <div className="avg-peices">Avg.Qty: 0</div>

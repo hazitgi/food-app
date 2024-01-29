@@ -3,7 +3,7 @@ import CartCountInputButton from "./CartCountInputButton";
 import { DeleteButton } from "./DeleteButton";
 
 const ProductSummarySingle = (props) => {
-  const { name, product_image, our_price } = props?.details;
+  const { id, name, product_image, our_price } = props?.details;
   return (
     <div className="single-product-summary">
       <div className="summar-single">
@@ -16,13 +16,13 @@ const ProductSummarySingle = (props) => {
           </h3>
           <div className="food-orderdetail">
             <div className="orderdetail">
-              <CartCountInputButton count="10" />
+              <CartCountInputButton count={props?.cartItem?.count} />
             </div>
             <div className="orderdetai">
-              <span className="price main">₹ 2500</span>
+              <span className="price main">₹ {our_price}</span>
             </div>
           </div>
-          <DeleteButton />
+          <DeleteButton key={id} id={id} name={name} />
           {/* <div className="food-orderdetail">
             <div className="oderdetail">
               

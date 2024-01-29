@@ -2,10 +2,12 @@ import { createContext, useReducer } from "react";
 
 const cart = localStorage.getItem("cart");
 const cartData = cart ? JSON.parse(cart) : [];
+const user = localStorage.getItem("user") || "";
+const isLoggedIn = user ? true : false;
 
 const initialState = {
-  user: "",
-  loggedIn: false,
+  user: user,
+  loggedIn: isLoggedIn,
   cart: cartData,
   cartCount: cartData?.length || 0,
   title: "",
@@ -20,7 +22,6 @@ const appReducer = (state, action) => {
         loggedIn: true,
       };
     case "SET_CART":
-
       return {
         ...state,
         cart: action.payload,
