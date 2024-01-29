@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import request from "../../services/api"
+import useRequest from "../../services/api"
 
 const ProductCategory = () => {
+  const request = useRequest();
   const apiProduct = "/api/category";
 
   const [categorysArray, setCategorysArray] = useState([]);

@@ -2,11 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../store/Context";
 import ProductSummarySingle from "../../../_components/ProductSummary";
 import TotalCart from "../../../_components/ProductSummary/TotalCart";
-import request from "../../../services/api";
+import useRequest from "../../../services/api";
 
 const ProductSummary = () => {
+  const request = useRequest();
   const context  = useContext(AppContext);
-  console.log("context.cartCount",context.user);
+  const {state, dispatch} = context
+  console.log("context.cartCount",state.user);
 
   const apiProduct = "/api/product";
 
@@ -28,8 +30,7 @@ const ProductSummary = () => {
       console.log(response.data.result);
     }
     const response = await request.post(apiProduct);
-    return response.data.result;
-
+    return response?.data?.result || [];
 
   };
 

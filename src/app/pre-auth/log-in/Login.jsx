@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
-import request from "../../../services/api";
+import useRequest from "../../../services/api";
 import { AppContext } from "../../../store/Context";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const request = useRequest();
   const [data, setData] = useState({
     username: "",
     password: "",

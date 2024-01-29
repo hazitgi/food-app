@@ -4,9 +4,10 @@ import ProductCategory from "../../../_components/ProductSingle/ProductCategory"
 import ProductSearch from "../../../_components/ProductSingle/ProductSearch";
 import SubmitButton from "../../../_components/ProductSingle/SubmitButton";
 import { AppContext } from "../../../store/Context";
-import request from "../../../services/api";
+import useRequest from "../../../services/api";
 
 const ProductListing = () => {
+  const request = useRequest();
   const apiProduct = "/api/product";
 
   const [productsArray, setProductsArray] = useState([]);
@@ -19,7 +20,7 @@ const ProductListing = () => {
 
   const fetchData = async () => {
     const response = await request.get(apiProduct);
-    return response.data.result;
+    return response?.data?.result || [];
   };
 
 

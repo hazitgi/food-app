@@ -8,6 +8,7 @@ import ProductSummary from "./app/post-auth/ProductSummary";
 import Layout from "./_components/Layout";
 //const router = createBrowserRouter(getBrowserRouter());
 import { AppProvider } from "./store/Context";
+import ProtectedRoute from "./app/post-auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +17,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProductListing />,
+        element: <ProtectedRoute element={ProductListing} />,
         title: "Create Purchase Order",
       },
       {
         path: "summary",
-        element: <ProductSummary />,
+        element: <ProtectedRoute element={ProductSummary} />,
         title: "Purchase Summary",
       },
     ],
@@ -42,6 +43,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
