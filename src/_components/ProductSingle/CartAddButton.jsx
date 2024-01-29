@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const CartAddButton = (props) => {
-  const { product_id, price } = props;
+  const { id, price } = props;
   const [count, setCount] = useState(0);
 
   const handleChangeText = (e) => {
@@ -11,7 +11,7 @@ const CartAddButton = (props) => {
 
   const addToCart = () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingItem = cart.find((item) => item.product_id === product_id);
+    const existingItem = cart.find((item) => item.id === id);
 
     if (existingItem) {
       existingItem.count = count;
@@ -19,7 +19,7 @@ const CartAddButton = (props) => {
       existingItem.total_price = price * count;
     } else {
       cart.push({
-        product_id: product_id,
+        id: id,
         count: count,
         price: price,
         total_price: price * count,

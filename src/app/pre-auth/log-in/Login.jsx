@@ -42,7 +42,6 @@ export const Login = () => {
         password: password,
       })
         .then((res) => {
-          console.log(res);
           context.user = res?.data?.result.name
           context.loggedIn = true
           localStorage.setItem("token", res?.data?.result.token);

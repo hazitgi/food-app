@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
 
 const request = axios.create({
   baseURL: "https://qm.apto.co.in",
@@ -9,26 +8,24 @@ const request = axios.create({
   },
 });
 
-request.interceptors.request.use(
+request.interceptors.response.use(
   (res) => {
     return res;
   },
   (err) => {
-    if (err?.response?.status !== 401) {
-      throw err;
-    }
+    console.log("erorr");
+    console.log(err?.response?.status);
     if (err?.response?.status === 401) {
       localStorage.removeItem("token");
-      useNavigate("/login");
+      window.location = window.location.protocol + "//" + window.location.host + "/login"
     }
     if (typeof err?.response?.data?.error?.name !== "undefined") {
       if (err?.response?.data?.error?.name === "TokenExpiredError") {
         localStorage.removeItem("token");
-        useNavigate("/login");
       }
     }
+    return Promise.reject(err);
   }
 );
-
 
 export default request;
