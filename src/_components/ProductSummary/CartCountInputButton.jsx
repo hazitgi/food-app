@@ -12,6 +12,7 @@ const CartCountInputButton = (props) => {
     let updatedCart = cart.map((product) => {
       if (product.id === cartItem.id) {
         product.count = value;
+        product.total_price = product.price * value;
       }
       return product;
     })
