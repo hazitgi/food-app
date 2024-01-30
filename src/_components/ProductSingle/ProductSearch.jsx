@@ -1,26 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import useRequest from "../../services/api";
-import { AppContext } from "../../store/Context";
 
-const ProductSearch = ({ productsArray, setProductsArray }) => {
+const ProductSearch = ({ setProductsArray }) => {
   const [search, setSearch] = useState("");
   const request = useRequest();
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    console.log("ProductSearch useEffect");
-
-    // Clear the previous timer on each keystroke
-    clearTimeout(timerRef.current);
-
-    // Set a new timer for 4 seconds
-    timerRef.current = setTimeout(() => {
-      fetchProducts();
-    }, 4000);
-    return () => {
-      clearTimeout(timerRef.current);
-    };
-  }, [search]);
 
   const fetchProducts = async () => {
     const data = await request.post("/api/product", { query: search });
@@ -33,6 +18,16 @@ const ProductSearch = ({ productsArray, setProductsArray }) => {
 
   const handleSearchKeyress = (e) => {
     setSearch(e.target.value);
+    // Clear the previous timer on each keystroke
+    clearTimeout(timerRef.current);
+
+    // Set a new timer for 4 seconds
+    timerRef.current = setTimeout(() => {
+      fetchProducts();
+    }, 2000);
+    return () => {
+      clearTimeout(timerRef.current);
+    };
   };
 
   return (

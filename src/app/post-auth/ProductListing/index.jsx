@@ -13,23 +13,45 @@ const ProductListing = () => {
   const apiProduct = "/api/product";
 
   const [productsArray, setProductsArray] = useState([]);
+  const [selectedCategory, setSetselectedCategory] = useState("");
 
   useEffect(() => {
-    fetchData().then((response) => {
-      setProductsArray(response);
-    });
-  }, []);
+    if (selectedCategory) {
+      fetchProductsBasedOnCategory();
+    } else {
+      fetchProducts().then((response) => {
+        setProductsArray(response);
+      });
+    }
+  }, [selectedCategory]);
 
-  const fetchData = async () => {
+  const fetchProducts = async () => {
     const response = await request.get(apiProduct);
     return response?.data?.result || [];
+  };
+
+  const fetchProductsBasedOnCategory = async () => {
+    const data = await request.post(apiProduct, {
+      category: selectedCategory,
+    });
+    if (data?.data?.result) {
+      setProductsArray(data.data.result);
+    } else {
+      setProductsArray([]);
+    }
   };
 
   return (
     <>
       <div className="product-header-sec">
-        <ProductSearch productsArray={productsArray} setProductsArray={setProductsArray}/>
-        <ProductCategory />
+        <ProductSearch
+          productsArray={productsArray}
+          setProductsArray={setProductsArray}
+        />
+        <ProductCategory
+          selectedCategory={selectedCategory}
+          setSetselectedCategory={setSetselectedCategory}
+        />
       </div>
       <div className="product-section">
         <section className="products-list">

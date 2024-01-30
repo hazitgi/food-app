@@ -102,6 +102,12 @@ main {
                 text-transform: uppercase;
                 text-decoration: none;
                 position: relative;
+                cursor: pointer;
+                &:hover{
+                    color: $white;
+                    font-weight: bold;
+                    background-color: $primary;
+                }
             }
             &.active a{
                 color: $primary;
@@ -115,6 +121,11 @@ main {
                     background-color: $primary;
                     position: absolute;
                 }
+            }
+            .seleted-item{
+                color: $white;
+                font-weight: bold;
+                background-color: $primary;
             }
         }
         &.child-tax li a{
