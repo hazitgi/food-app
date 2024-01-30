@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../store/Context";
+import useRequest from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 const TotalCart = ({ cartProducts }) => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const request = useRequest();
+  const navigate = useNavigate();
+
   let { cart } = state;
   const [totalPrice, settotalPrice] = useState(0);
   useEffect(() => {
@@ -19,8 +24,45 @@ const TotalCart = ({ cartProducts }) => {
       });
       let total = singleItemPrice.reduce((a, b) => a + b, 0);
       settotalPrice(total);
-    }else{
+    } else {
       settotalPrice(0);
+    }
+  };
+
+  const checkoutCartItems = () => {
+    if (cart[0]) {
+      let itemForCheckout = cart.map((item) => {
+        return {
+          id: item.id,
+          quantity: item.count,
+        };
+      });
+      request({
+        url: "/api/cart",
+        method: "POST",
+        data: {
+          json: itemForCheckout,
+        },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({
+              type: "SET_CART",
+              payload: [],
+            })
+            localStorage.removeItem("cart");
+
+            console.log(">>>>>>>>>>");
+            alert("Checkout Successful");
+            navigate("/");
+          } else {
+            console.log(res.data, ">>>>>>>>>>");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err?.message);
+        });
     }
   };
 
@@ -34,7 +76,12 @@ const TotalCart = ({ cartProducts }) => {
               <div className="total-amount">₹ {totalPrice}</div>
             </div>
             <div className="checkout-btn">
-              <span className="btn btn-secondary">Check Out</span>
+              <span
+                className="btn btn-secondary"
+                onClick={() => checkoutCartItems()}
+              >
+                Check Out
+              </span>
             </div>
           </div>
         </div>
