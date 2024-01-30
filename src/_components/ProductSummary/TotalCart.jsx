@@ -50,9 +50,12 @@ const TotalCart = ({ cartProducts }) => {
               type: "SET_CART",
               payload: [],
             })
+            dispatch({
+              type: "SET_CART_COUNT",
+              payload: 0,
+            });
             localStorage.removeItem("cart");
 
-            console.log(">>>>>>>>>>");
             alert("Checkout Successful");
             navigate("/");
           } else {

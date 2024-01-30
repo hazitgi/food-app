@@ -16,6 +16,10 @@ export const DeleteButton = ({ id, name }) => {
       type: "SET_CART",
       payload: updatedCart,
     });
+    dispatch({
+      type: "SET_CART_COUNT",
+      payload: updatedCart?.length,
+    });
   };
   return (
     <span className="deleteCartBtn" onClick={() => deleteItemFromCart()}>

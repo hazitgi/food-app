@@ -16,6 +16,10 @@ const CartCountInputButton = (props) => {
       return product;
     })
     dispatch({ type: "SET_CART", payload: updatedCart });
+    dispatch({
+      type: "SET_CART_COUNT",
+      payload: updatedCart?.length
+    });
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   return (

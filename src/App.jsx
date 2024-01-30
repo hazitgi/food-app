@@ -9,6 +9,8 @@ import Layout from "./_components/Layout";
 //const router = createBrowserRouter(getBrowserRouter());
 import { AppProvider } from "./store/Context";
 import ProtectedRoute from "./app/post-auth/ProtectedRoute";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  library.add(fas);
   return (
     <div className="App">
       <AppProvider>

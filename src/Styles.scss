@@ -529,11 +529,24 @@ input[type=number] {
     }
 }
 
-.submit-total{
-    position: fixed;
-    background: $white;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding: 10px 0;
+.submit-total {
+  position: fixed;
+  background: $white;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 0;
+  .cart-btn {
+    padding: 20px;
+    .cart-count {
+      overflow: visible;
+      position: absolute;
+      padding: 6px;
+      color: $white;
+      top: 0px;
+      right: 0px;
+      background-color: #ac0000;
+      border-radius: 20% 20%;
+    }
+  }
 }

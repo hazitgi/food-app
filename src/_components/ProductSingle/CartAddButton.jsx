@@ -33,6 +33,10 @@ const CartAddButton = (props) => {
       type: "SET_CART",
       payload: cartItems,
     });
+    dispatch({
+      type: "SET_CART_COUNT",
+      payload: cartItems?.length,
+    });
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
   };
