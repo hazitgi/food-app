@@ -9,7 +9,7 @@ const CartAddButton = (props) => {
   const [count, setCount] = useState(cartItem?.count || 0);
 
   const handleChangeText = (e) => {
-    let value = e.target.value;
+    let value = parseInt(e.target.value);
     setCount(value);
   };
 

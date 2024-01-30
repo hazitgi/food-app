@@ -8,7 +8,7 @@ const CartCountInputButton = (props) => {
 
   let itemInCart = cart.find((item) => item.id === cartItem.id);
   const handleChangeCount = (e) => {
-    let value = e.target.value;
+    let value = parseInt(e.target.value);
     let updatedCart = cart.map((product) => {
       if (product.id === cartItem.id) {
         product.count = value;
