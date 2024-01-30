@@ -16,7 +16,7 @@ const ProductSummarySingle = (props) => {
           </h3>
           <div className="food-orderdetail">
             <div className="orderdetail">
-              <CartCountInputButton count={props?.cartItem?.count} />
+              <CartCountInputButton cartItem={props?.cartItem} />
             </div>
             <div className="orderdetai">
               <span className="price main">₹ {our_price}</span>

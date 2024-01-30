@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../../store/Context";
 
 const CartCountInputButton = (props) => {
-  const [count, setCount] = useState(props.count);
+  const { state, dispatch } = useContext(AppContext);
+  const { cartItem } = props;
+  let { cart } = state;
 
+  let itemInCart = cart.find((item) => item.id === cartItem.id);
   const handleChangeCount = (e) => {
     let value = e.target.value;
-    setCount(value);
+    let updatedCart = cart.map((product) => {
+      if (product.id === cartItem.id) {
+        product.count = value;
+      }
+      return product;
+    })
+    dispatch({ type: "SET_CART", payload: updatedCart });
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   return (
     <div className="cart-add-btn-wrap">
@@ -16,7 +27,7 @@ const CartCountInputButton = (props) => {
           onChange={(e) => {
             handleChangeCount(e);
           }}
-          value={count}
+          value={itemInCart.count}
         />
         <div className="txt-txt">box</div>
       </div>

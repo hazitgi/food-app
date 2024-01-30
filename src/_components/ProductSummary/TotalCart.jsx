@@ -19,6 +19,8 @@ const TotalCart = ({ cartProducts }) => {
       });
       let total = singleItemPrice.reduce((a, b) => a + b, 0);
       settotalPrice(total);
+    }else{
+      settotalPrice(0);
     }
   };
 
