@@ -28,7 +28,7 @@ const ProductListing = () => {
   return (
     <>
       <div className="product-header-sec">
-        <ProductSearch />
+        <ProductSearch productsArray={productsArray} setProductsArray={setProductsArray}/>
         <ProductCategory />
       </div>
       <div className="product-section">
